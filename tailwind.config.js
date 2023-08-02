@@ -6,8 +6,10 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      primary: "#9400d3",
+    extend: {
+      colors: {
+        primary: "#9400d3",
+      },
     },
   },
   plugins: [],
