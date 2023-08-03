@@ -2,6 +2,8 @@
 import { ITodoItem } from "@/types/todos";
 
 export const getTodos = (): ITodoItem[] => {
+  if (typeof window === "undefined") return [] as ITodoItem[];
+
   const data = JSON.parse(localStorage.getItem("todos")!);
   return data;
 };
