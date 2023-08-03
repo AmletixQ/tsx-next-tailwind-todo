@@ -18,7 +18,7 @@ const TodoList: FC<IProps> = ({ todos, setTodos }) => {
       ))}
     </div>
   ) : (
-    <h2>Don't found todo</h2>
+    <h2>Don&apos;t found todo</h2>
   );
 };
 
