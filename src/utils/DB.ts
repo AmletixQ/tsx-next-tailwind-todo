@@ -1,3 +1,4 @@
+"use client";
 import { ITodoItem } from "@/types/todos";
 
 export const getTodos = (): ITodoItem[] => {
