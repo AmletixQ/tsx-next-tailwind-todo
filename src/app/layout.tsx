@@ -1,6 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { Providers } from "@/components/Providers";
+import Footer from "@/components/Footer";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -15,13 +17,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={
-          (montserrat.className, "w-screen h-screen flex justify-center")
+          (montserrat.className,
+          "w-screen min-h-screen flex justify-center overflow-x-hidden")
         }
       >
-        {children}
+        <div className="w-[800px] flex flex-col justify-between">
+          <Providers>{children}</Providers>
+          <Footer />
+        </div>
       </body>
     </html>
   );
