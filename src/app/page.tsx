@@ -1,8 +1,9 @@
 "use client";
 import TodoAddForm from "@/components/TodoAddForm";
 import TodoList from "@/components/TodoList";
-import Input from "@/components/UI/Input";
 import { ITodoItem } from "@/types/todos";
+import { Divider, Input } from "@nextui-org/react";
+
 import { getTodos } from "@/utils/DB";
 import { useEffect, useMemo, useState } from "react";
 
@@ -26,16 +27,18 @@ const Home = () => {
   }, [todos, search]);
 
   return (
-    <div className="w-2/4 mt-2 flex flex-col gap-2">
+    <div className="mt-2 flex flex-col gap-2 px-4">
       <Input
+        variant="bordered"
+        color="success"
         type="text"
         placeholder="Search..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <hr />
+      <Divider />
       <TodoAddForm todos={todos} setTodos={setTodos} />
-      <hr />
+      <Divider />
       <TodoList todos={filteredTodos} setTodos={setTodos} />
     </div>
   );
