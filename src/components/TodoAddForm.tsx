@@ -1,9 +1,8 @@
 "use client";
 import { FC, FormEvent, useState } from "react";
-import Button from "./UI/Button";
-import Input from "./UI/Input";
 import { ISetTodos } from "@/types/todos";
 import { saveData } from "@/utils/DB";
+import { Button, Input } from "@nextui-org/react";
 
 const TodoAddForm: FC<ISetTodos> = ({ todos, setTodos }) => {
   const [name, setName] = useState("");
@@ -25,12 +24,16 @@ const TodoAddForm: FC<ISetTodos> = ({ todos, setTodos }) => {
   return (
     <form onSubmit={handleSubmit} className={"flex flex-col gap-1"}>
       <Input
+        variant="bordered"
+        color="success"
         placeholder="Enter todo name"
         type={"text"}
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <Button>Create todo</Button>
+      <Button variant="bordered" color="success" className="w-max">
+        Create todo
+      </Button>
     </form>
   );
 };
