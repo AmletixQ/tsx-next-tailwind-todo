@@ -8,17 +8,19 @@ const TodoAddForm: FC<ISetTodos> = ({ todos, setTodos }) => {
   const [name, setName] = useState("");
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const newTodos = [
-      ...todos,
-      {
-        id: todos.length ? todos[todos.length - 1].id + 1 : 1,
-        title: name,
-        completed: false,
-      },
-    ];
-    setTodos(newTodos);
-    saveData(newTodos);
-    setName("");
+    if (name) {
+      const newTodos = [
+        ...todos,
+        {
+          id: todos.length ? todos[todos.length - 1].id + 1 : 1,
+          title: name,
+          completed: false,
+        },
+      ];
+      setTodos(newTodos);
+      saveData(newTodos);
+      setName("");
+    }
   };
 
   return (
@@ -31,7 +33,12 @@ const TodoAddForm: FC<ISetTodos> = ({ todos, setTodos }) => {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <Button type="submit" variant="bordered" color="success" className="w-max">
+      <Button
+        type="submit"
+        variant="bordered"
+        color="success"
+        className="w-max"
+      >
         Create todo
       </Button>
     </form>
