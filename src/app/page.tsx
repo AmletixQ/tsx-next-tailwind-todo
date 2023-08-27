@@ -6,6 +6,7 @@ import { Divider, Input } from "@nextui-org/react";
 
 import { getTodos } from "@/utils/DB";
 import { useEffect, useMemo, useState } from "react";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 const Home = () => {
   const data = getTodos();
@@ -28,14 +29,17 @@ const Home = () => {
 
   return (
     <div className="mt-2 flex flex-col gap-2 px-4">
-      <Input
-        variant="bordered"
-        color="success"
-        type="text"
-        placeholder="Search..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <div className="flex items-center gap-4">
+        <Input
+          variant="bordered"
+          color="success"
+          type="text"
+          placeholder="Search..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <ThemeSwitcher />
+      </div>
       <Divider />
       <TodoAddForm todos={todos} setTodos={setTodos} />
       <Divider />
