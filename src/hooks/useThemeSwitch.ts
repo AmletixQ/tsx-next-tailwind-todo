@@ -4,6 +4,9 @@ type Response = [boolean, Dispatch<SetStateAction<boolean>>];
 
 export const useThemeSwitch = (): Response => {
   const [isDark, setIsDark] = useState(false);
+
+  if (window === undefined) return [false, setIsDark];
+
   if (
     localStorage.theme === "dark" ||
     (!("theme" in localStorage) &&
