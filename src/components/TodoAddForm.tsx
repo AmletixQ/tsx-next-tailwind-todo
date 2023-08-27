@@ -8,6 +8,7 @@ const TodoAddForm: FC<ISetTodos> = ({ todos, setTodos }) => {
   const [name, setName] = useState("");
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
     if (name) {
       const newTodos = [
         ...todos,
