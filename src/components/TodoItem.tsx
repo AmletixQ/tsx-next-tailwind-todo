@@ -1,8 +1,8 @@
-import { ISetTodos, ITodoItem } from "@/types/todos";
 import { motion } from "framer-motion";
-import { saveData } from "@/utils/DB";
 import { FC, MouseEvent } from "react";
 import { Button, Card } from "@nextui-org/react";
+
+import { ITodoItem } from "@/types/todos";
 import useTodos from "@/store/todos";
 
 interface IProps extends ITodoItem {}
