@@ -1,7 +1,5 @@
-import { Dispatch, SetStateAction } from "react";
-
 export interface ITodoItem {
-  id: number;
+  id: string;
   title: string;
   completed: boolean;
 }
@@ -9,11 +7,6 @@ export interface ITodoItem {
 export interface IStoreTodos {
   todos: ITodoItem[];
   createTodo: (value: string) => void;
-  updateTodo: (id: number) => void;
-  deleteTodo: (id: number) => void;
-}
-
-export interface ISetTodos {
-  todos: ITodoItem[];
-  setTodos: Dispatch<SetStateAction<ITodoItem[]>>;
+  updateTodo: (id: string) => void;
+  deleteTodo: (id: string) => void;
 }
