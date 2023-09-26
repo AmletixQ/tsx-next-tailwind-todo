@@ -2,11 +2,6 @@
 import { Card, Divider, Link } from "@nextui-org/react";
 
 const Footer = () => {
-  const links: { href: string; content: string }[] = [
-    { href: "https://github.com/AmletixQ/", content: "GitHub" },
-    { href: "https://vk.com/amletixq/", content: "VK" },
-    { href: "https://t.me/AmletixQ/", content: "Telegram" },
-  ];
   return (
     <footer className="mx-6 my-4 sm:mx-4">
       <Card
