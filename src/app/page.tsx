@@ -3,12 +3,17 @@ import TodoAddForm from "@/components/TodoAddForm";
 import TodoList from "@/components/TodoList";
 import { Divider, Input } from "@nextui-org/react";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useTodos from "@/store/todos";
+import { ITodoItem } from "@/types/todos";
 
 const Home = () => {
+  useEffect(() => {
+    useTodos.persist.rehydrate();
+  }, []);
+
   const [search, setSearch] = useState("");
-  const todos = useTodos((state) => state.todos);
+  const todos = useTodos((state) => state.todos) as ITodoItem[];
 
   const filteredTodos = useMemo(() => {
     if (search) {

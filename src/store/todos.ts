@@ -30,7 +30,7 @@ const useTodos = create<IStoreTodos>()(
           }),
         })),
     }),
-    { name: "todolists" },
+    { name: "todolists", skipHydration: true },
   ),
 );
 
