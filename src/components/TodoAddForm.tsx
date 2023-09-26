@@ -1,27 +1,20 @@
 "use client";
-import { FC, FormEvent, useState } from "react";
-import { ISetTodos } from "@/types/todos";
-import { saveData } from "@/utils/DB";
+import { FormEvent, useState } from "react";
 import { Button, Input } from "@nextui-org/react";
+import useTodos from "@/store/todos";
 
-const TodoAddForm: FC<ISetTodos> = ({ todos, setTodos }) => {
+const TodoAddForm = () => {
   const [name, setName] = useState("");
+  const createTodo = useTodos((state) => state.createTodo);
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    if (name) {
-      const newTodos = [
-        ...todos,
-        {
-          id: todos.length ? todos[todos.length - 1].id + 1 : 1,
-          title: name,
-          completed: false,
-        },
-      ];
-      setTodos(newTodos);
-      saveData(newTodos);
-      setName("");
-    }
+    if (!name) return;
+
+    createTodo(name);
+    setName("");
+
   };
 
   return (

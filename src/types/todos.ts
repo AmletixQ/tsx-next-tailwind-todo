@@ -1,12 +1,12 @@
-import { Dispatch, SetStateAction } from "react";
-
 export interface ITodoItem {
-  id: number;
+  id: string;
   title: string;
   completed: boolean;
 }
 
-export interface ISetTodos {
+export interface IStoreTodos {
   todos: ITodoItem[];
-  setTodos: Dispatch<SetStateAction<ITodoItem[]>>;
+  createTodo: (value: string) => void;
+  updateTodo: (id: string) => void;
+  deleteTodo: (id: string) => void;
 }

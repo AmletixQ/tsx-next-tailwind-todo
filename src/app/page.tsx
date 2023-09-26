@@ -1,21 +1,23 @@
 "use client";
 import TodoAddForm from "@/components/TodoAddForm";
 import TodoList from "@/components/TodoList";
-import { ITodoItem } from "@/types/todos";
 import { Divider, Input } from "@nextui-org/react";
 
-import { getTodos } from "@/utils/DB";
 import { useEffect, useMemo, useState } from "react";
+
+import useTodos from "@/store/todos";
+import { ITodoItem } from "@/types/todos";
+
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 
-const Home = () => {
-  const data = getTodos();
-  const [search, setSearch] = useState("");
-  const [todos, setTodos] = useState<ITodoItem[]>([] as ITodoItem[]);
 
+const Home = () => {
   useEffect(() => {
-    if (data) setTodos(data);
+    useTodos.persist.rehydrate();
   }, []);
+
+  const [search, setSearch] = useState("");
+  const todos = useTodos((state) => state.todos) as ITodoItem[];
 
   const filteredTodos = useMemo(() => {
     if (search) {
@@ -41,9 +43,9 @@ const Home = () => {
         <ThemeSwitcher />
       </div>
       <Divider />
-      <TodoAddForm todos={todos} setTodos={setTodos} />
+      <TodoAddForm />
       <Divider />
-      <TodoList todos={filteredTodos} setTodos={setTodos} />
+      <TodoList filteredTodos={filteredTodos} />
     </div>
   );
 };
