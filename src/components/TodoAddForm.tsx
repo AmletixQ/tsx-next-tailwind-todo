@@ -9,6 +9,9 @@ const TodoAddForm = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    if (!name) return;
+
     createTodo(name);
     setName("");
   };
